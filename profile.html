@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay's Profile</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        -webkit-user-drag:none;
+    }
+    body, html{
+        height:100%;
+        width:100%;
+    }
+    body{
+        padding:24px;
+        background-color:#fbf1ea;
+        background-image:radial-gradient(#d7d3c1 1px,transparent 1px);
+        background-size:20px 20px;
+    }
+    .main-container{
+        display:flex;
+        flex-direction:column;
+        height:100%;
+        width:100%;
+    }
+    .profile-card{
+        display:flex;
+        flex-direction:column;
+        width:360px;
+        height:300px;
+        background-color:snow;
+        border:1px solid #e1e1e1;
+        box-shadow:0px 6px 0px #c4c4c4;
+        border-radius:6px;
+        overflow:hidden;
+    }
+    .profile-banner{
+        height:50%;
+        background-color:black;
+        object-fit:cover;
+    }
+    .profile-picture{
+        position:fixed;
+        transform:translate(-50%,-50%);
+        top:154px;
+        left:198px;
+        height:120px;
+        width:120px;
+        background-color:black;
+        border-radius:50%;
+        object-fit:cover;
+    }
+    .profile-info{
+        display:flex;
+        flex-direction:column;
+        height:100%;
+        width:100%;
+        padding:18px;
+    }
+    .name{
+        font-family: 'Times New Roman', Times, serif;
+        margin-top:24px;
+    }
+    .tag{
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        font-style:italic;
+    }
+    .bf-ad{
+        height:12px;
+        width:100%;
+        margin-top:auto;
+        border-radius:6px;
+        border:1px solid #e1e1e1;
+        overflow:hidden;
+    }
+    .bf-ad__progress{
+        width:0px;
+        height:100%;
+        background-color:#a3885f;
+    }
+</style>
+<body>
+    <div></div>
+    <div class="main-container">
+        <div class="profile-card">
+            <img class="profile-picture" src="https://i.pinimg.com/736x/ed/64/11/ed641194f960a68e841e4fedeb3cdb9d.jpg" alt="">
+            <img class="profile-banner" src="https://i.pinimg.com/1200x/0d/aa/48/0daa48b51f73a3e7200ad40be66ff297.jpg" alt="">
+            <div class="profile-info">
+                <h1 class="name">
+                    Jay
+                </h1>
+                <span class="tag">kromium_p</span>
+                <div class="bf-ad">
+                    <div class="bf-ad__progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const startTime = new Date('2010-01-07').getTime();
+    const endTime = new Date('2028-01-07').getTime();
+    const bfadProgress = document.querySelector('.bf-ad__progress');
+
+    function meow(){
+        const now = Date.now();
+        if(now>=endTime){
+            bfadProgress.style.width='100%';
+            return;
+        }
+        const totDuration = endTime-startTime;
+        const timeElapsed = now-startTime;
+        const percent = (timeElapsed/totDuration)*100;
+        bfadProgress.style.width=percent+'%';
+    }
+    meow();
+</script>
+</html>
